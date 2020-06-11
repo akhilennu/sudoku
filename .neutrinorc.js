@@ -1,18 +1,19 @@
-const standard = require('@neutrinojs/standardjs');
+// const standard = require('@neutrinojs/standardjs');
 const react = require('@neutrinojs/react');
-const jest = require('@neutrinojs/jest');
+// const jest = require('@neutrinojs/jest');
 
 module.exports = {
   options: {
     root: __dirname,
   },
   use: [
-    standard(),
+    // standard(),
     react({
       html: {
         title: 'sudoku'
-      }
+      },
+      publicPath: ''
     }),
-    jest(),
+    // jest(),
   ],
 };
