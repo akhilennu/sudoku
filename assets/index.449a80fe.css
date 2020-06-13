@@ -1,0 +1,19 @@
+.App {
+  padding: 20px;
+}
+
+.Block {
+  padding: 1em;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px double;
+}
+
