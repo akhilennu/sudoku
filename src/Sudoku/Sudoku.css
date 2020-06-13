@@ -1,5 +1,10 @@
-.Sudoku{
-    border-style: solid;
-    border: 1px;
-    box-shadow: 0 0 4px 2px black;
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px double;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import './Block.css'
+import './Block.css';
 
 export default function Block(props) {
-return <td className='Block'>{props.value}</td>
+  return <td className="Block">{props.value}</td>;
 }
