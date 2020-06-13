@@ -1,27 +1,47 @@
 import React from 'react';
-import TableRow from './TableRow/TableRow';
-import './Sudoku.css';
+import SudokuRenderer from './SudokuRenderer/SudokuRenderer';
+import ImageUpload from './ImageUpload/ImageUpload';
+import axios from 'axios';
+import DisplayImage from './DisplayImage/DisplayImage';
 
-export default function Sudoku(props) {
-  const rows = 'ABCDEFGHI';
-  const columns = '123456789';
-  const table_data = [];
-
-  for (const i of rows) {
-    const row_data = [];
-    for (const j of columns) {
-      row_data.push(i + j);
-    }
-    table_data.push(row_data);
+class Sudoku extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageVal: null,
+    };
   }
-  console.log(table_data);
-  return (
-    <table>
-      <tbody>
-        {table_data.map((data) => (
-          <TableRow data={data} />
-        ))}
-      </tbody>
-    </table>
-  );
+
+  imageUploaded = async (file) => {
+    this.setState({
+      imageVal: file,
+      displayImage: window.URL.createObjectURL(file),
+    });
+    let formData = new FormData();
+    formData.append('file', file);
+    const res = await axios.post(
+      'https://akhilennu.pythonanywhere.com/test-uploader',
+      //   'https://akhilennu.pythonanywhere.com/uploader',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    console.log(res);
+    console.log(this.state);
+  };
+  render() {
+    return (
+      <>
+        <ImageUpload onUpload={this.imageUploaded} />
+        <div style={{ display: 'flex' }}>
+          <SudokuRenderer />
+          <DisplayImage src={this.state.displayImage} />
+        </div>
+      </>
+    );
+  }
 }
+export default Sudoku;
