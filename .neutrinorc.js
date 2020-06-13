@@ -12,7 +12,8 @@ module.exports = {
       html: {
         title: 'sudoku'
       },
-      publicPath: ''
+      publicPath: '',
+      hot: true
     }),
     // jest(),
   ],
