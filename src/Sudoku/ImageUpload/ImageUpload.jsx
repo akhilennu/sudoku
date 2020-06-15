@@ -7,7 +7,7 @@ export default function ImageUpload(props) {
     props.onUpload(acceptedFiles[0]);
   }, []);
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/jpeg',
+    accept: 'image/jpeg, image/png',
     multiple: false,
     onDrop,
   });
@@ -17,7 +17,7 @@ export default function ImageUpload(props) {
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop a jpeg file here, or click to select files</p>
-        <em>(Only *.jpeg image will be accepted)</em>
+        <em>(Only *.jpeg and *.png image will be accepted)</em>
       </div>
     </section>
   );
