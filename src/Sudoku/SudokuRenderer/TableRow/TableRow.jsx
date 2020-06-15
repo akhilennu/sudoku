@@ -4,7 +4,12 @@ export default function TableRow(props) {
   return (
     <tr>
       {props.data.map((value) => (
-        <Block key={value} value={value} />
+        <Block
+          key={value}
+          keyValue={value}
+          valueValue={props.sudokuObject[value]}
+          getKeyVal={props.getKeyVal}
+        />
       ))}
     </tr>
   );

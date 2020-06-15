@@ -10,10 +10,10 @@ module.exports = {
     // standard(),
     react({
       html: {
-        title: 'sudoku'
+        title: 'sudoku',
       },
       publicPath: '',
-      hot: true
+      hot: true,
     }),
     // jest(),
   ],

@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Block.css';
 
 export default function Block(props) {
-  return <td className="Block">{props.value}</td>;
+  let [value, setValue] = useState(props.valueValue);
+  let setValueParam = (e) => {
+    setValue(e.target.value);
+    props.getKeyVal(props.keyValue, e.target.value);
+  };
+  return (
+    <td className="Block">
+      <input value={value} onChange={setValueParam} />
+    </td>
+  );
 }

@@ -1,3 +1,7 @@
 .Block {
   padding: 1em;
 }
+
+input {
+  width: 1em;
+}
