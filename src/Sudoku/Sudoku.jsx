@@ -67,6 +67,7 @@ class Sudoku extends React.Component {
         <div style={{ display: 'flex' }}>
           {this.state.sudokuObject && (
             <SudokuRenderer
+              key={JSON.stringify(this.state.sudokuObject)}
               sudokuObject={this.state.sudokuObject}
               getSudokuObject={this.getSudokuObject}
             />
