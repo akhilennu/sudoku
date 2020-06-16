@@ -2,6 +2,14 @@ td {
   border: 1px solid black;
 }
 
+td:nth-child(3n + 3) {
+  border-right: 2px double;
+}
+
+tr:nth-child(3n + 3) {
+  border-bottom: 2px double;
+}
+
 table {
   border-collapse: collapse;
   border: 2px double;
