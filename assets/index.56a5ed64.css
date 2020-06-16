@@ -2,16 +2,22 @@
   padding: 20px;
 }
 
-.Block {
-  padding: 1em;
-}
-
 input {
   width: 1em;
+  padding: 1em;
+  border: 0;
 }
 
 td {
   border: 1px solid black;
+}
+
+td:nth-child(3n + 3) {
+  border-right: 2px double;
+}
+
+tr:nth-child(3n + 3) {
+  border-bottom: 2px double;
 }
 
 table {
@@ -39,5 +45,11 @@ table {
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
