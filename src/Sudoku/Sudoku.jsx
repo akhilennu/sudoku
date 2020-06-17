@@ -110,6 +110,7 @@ class Sudoku extends React.Component {
   render() {
     return (
       <>
+        <h1 className="center">Screenshot Sudoku Solver</h1>
         <ImageUpload onUpload={this.imageUploaded} />
 
         {this.state.sudokuObject && (
@@ -125,14 +126,14 @@ class Sudoku extends React.Component {
             </div>
             <Divider light />
             <div className="center">
-              <Fab
+              {/* <Fab
                 variant="extended"
                 color="secondary"
                 onClick={this.saveImages}
               >
                 <SaveIcon />
                 Save Images for Training
-              </Fab>
+              </Fab> */}
               <Fab variant="extended" color="primary" onClick={this.solve}>
                 <ArrowForwardIosIcon />
                 Solve
