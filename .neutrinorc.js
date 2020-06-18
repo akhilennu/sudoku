@@ -2,6 +2,18 @@
 const react = require('@neutrinojs/react');
 // const jest = require('@neutrinojs/jest');
 
+const bundling = (neutrino) => {
+  neutrino.config.optimization.merge({
+    splitChunks: {
+      cacheGroups: {
+        defaultVendors: {
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  });
+};
+
 module.exports = {
   options: {
     root: __dirname,
@@ -10,11 +22,12 @@ module.exports = {
     // standard(),
     react({
       html: {
-        title: 'sudoku',
+        title: 'Screenshot Sudoku Solver',
       },
       publicPath: '',
       hot: true,
     }),
+    bundling,
     // jest(),
   ],
 };
