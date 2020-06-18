@@ -32,28 +32,35 @@ class Sudoku extends React.Component {
     });
     let formData = new FormData();
     formData.append('file', file);
-    const res = await axios.post(
-      'https://screenshot-sudoku-solver.herokuapp.com/uploader',
-      // 'http://localhost:3000/uploader',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+    try {
+      const res = await axios.post(
+        'https://screenshot-sudoku-solver.herokuapp.com/uploader',
+        // 'http://localhost:3000/uploader',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        this.snackbarMessage = Constants.M_S_IMAGE_UPLOAD;
+        this.snackbarSeverety = 'success';
       }
-    );
-    if (res.status === 200) {
-      this.snackbarMessage = Constants.M_S_IMAGE_UPLOAD;
-      this.snackbarSeverety = 'success';
-    } else {
+      this.setState({
+        sudokuObject: res.data,
+        loading: false,
+        snackbarActive: true,
+      });
+    } catch (err) {
       this.snackbarMessage = Constants.M_F_IMAGE_UPLOAD;
       this.snackbarSeverety = 'error';
+      this.setState({
+        loading: false,
+        snackbarActive: true,
+      });
     }
-    this.setState({
-      sudokuObject: res.data ? res.data : null,
-      loading: false,
-      snackbarActive: true,
-    });
   };
 
   getSudokuObject = (obj) => {
@@ -83,28 +90,35 @@ class Sudoku extends React.Component {
     this.setState({
       loading: true,
     });
-    const res = await axios.post(
-      'https://screenshot-sudoku-solver.herokuapp.com/solve',
-      // 'http://localhost:3000/solve',
-      { body: this.state.sudokuObject },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    try {
+      const res = await axios.post(
+        'https://screenshot-sudoku-solver.herokuapp.com/solve',
+        // 'http://localhost:3000/solve',
+        { body: this.state.sudokuObject },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        this.snackbarMessage = Constants.M_S_SOLVE;
+        this.snackbarSeverety = 'success';
       }
-    );
-    if (res.status === 200) {
-      this.snackbarMessage = Constants.M_S_SOLVE;
-      this.snackbarSeverety = 'success';
-    } else {
+      this.setState({
+        sudokuObject: res.data,
+        loading: false,
+        snackbarActive: true,
+      });
+    } catch (err) {
       this.snackbarMessage = Constants.M_F_SOLVE;
       this.snackbarSeverety = 'error';
+      this.setState({
+        loading: false,
+        snackbarActive: true,
+      });
     }
-    this.setState({
-      sudokuObject: res.data ? res.data : this.state.sudokuObject,
-      loading: false,
-      snackbarActive: true,
-    });
   };
 
   render() {
