@@ -92,8 +92,8 @@ class Sudoku extends React.Component {
     });
     try {
       const res = await axios.post(
-        'https://screenshot-sudoku-solver.herokuapp.com/solve',
-        // 'http://localhost:3000/solve',
+        // 'https://screenshot-sudoku-solver.herokuapp.com/solve',
+        'http://localhost:3000/solve',
         { body: this.state.sudokuObject },
         {
           headers: {
@@ -140,14 +140,14 @@ class Sudoku extends React.Component {
             </div>
             <Divider light />
             <div className="center">
-              {/* <Fab
+              <Fab
                 variant="extended"
                 color="secondary"
                 onClick={this.saveImages}
               >
                 <SaveIcon />
                 Save Images for Training
-              </Fab> */}
+              </Fab>
               <Fab variant="extended" color="primary" onClick={this.solve}>
                 <ArrowForwardIosIcon />
                 Solve
@@ -164,6 +164,16 @@ class Sudoku extends React.Component {
         >
           <Alert severity={this.snackbarSeverety}>{this.snackbarMessage}</Alert>
         </Snackbar>
+        <div className="center top-padding">
+          <iframe
+            width="786"
+            height="441"
+            src="https://www.youtube.com/embed/xH53-Wm4uJA"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </>
     );
   }
