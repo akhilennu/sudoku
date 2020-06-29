@@ -92,8 +92,8 @@ class Sudoku extends React.Component {
     });
     try {
       const res = await axios.post(
-        // 'https://screenshot-sudoku-solver.herokuapp.com/solve',
-        'http://localhost:3000/solve',
+        'https://screenshot-sudoku-solver.herokuapp.com/solve',
+        // 'http://localhost:3000/solve',
         { body: this.state.sudokuObject },
         {
           headers: {
